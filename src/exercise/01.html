@@ -2,15 +2,32 @@
 <!-- http://localhost:3000/isolated/exercise/01.html -->
 
 <!-- 🐨 Create (in HTML) a <body> with a <div> with the id of "root" -->
-<!-- 🐨 Then create a <script type="module"> for your JavaScript -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <title>Exercise 1</title>
+  </head>
+  <body>
+    <div id="root">
 
-<!-- These next instructions are to be written in JavaScript in the <script> tag -->
-<!-- 🐨 Create a div -->
-<!--   💰 document.createElement('div') -->
+    </div>
+    <!-- 🐨 Then create a <script type="module"> for your JavaScript -->
+    <script type="module">
+      // These next instructions are to be written in JavaScript in the <script> tag
+      // 🐨 Create a div
+      // 💰 document.createElement('div')
+      var newDiv = document.createElement('div')
 
-<!-- 🐨 Set the div's textContent to 'Hello World' and className to 'container' -->
-<!--   💰 div.textContent = '...' -->
+      // 🐨 Set the div's textContent to 'Hello World' and className to 'container'
+      // 💰 div.textContent = '...'
+      newDiv.innerHTML = 'Hello World';
+      newDiv.classList.add('container');
 
-<!-- 🐨 Append the div to the root div using `append` -->
-<!--   💰 document.getElementById('root') -->
-<!--   📜 https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append -->
+      // 🐨 Append the div to the root div using `append`
+      // 💰 document.getElementById('root')
+      // 📜 https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append
+        document.querySelector('#root');
+        root.appendChild(newDiv)
+    </script>
+  </body>
+  </html>

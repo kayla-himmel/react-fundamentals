@@ -6,18 +6,61 @@
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
   <script type="text/babel">
+    // // Object of proptype validators so we can reuse it, but this only works in development mode--Babel removes it in production so the validation doesn't happen in production (use prop-type npm package instead since that works in both)
+    // const PropTypes = {
+    //   string(props, propName, componentName) {  
+    //     const type = typeof props[propName];
+    //     if (type !== 'string') {
+    //       return new Error(`Error: The ${componentName} component is expecting the ${propName} prop to be passed a "string" but is receiving a ${type} type instead.`)
+    //     }
+    //   }
+    // };
+
     // 🐨 Make a function called `message` which returns the JSX we want to share
+    // Extra credit #2 (custom component with uppercase name)
+    // function Message({children}) {
+    //   return <div className="message">{children}</div>
+    // };
+    // Extra credit #3 (added proptype validation)
+    function Message({subject, greeting}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
+    };
 
-    // 🐨 use that function in place of the divs below with:
-    // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
+    Message.propTypes = {
+      subject: PropTypes.string.isRequired,
+      greeting: PropTypes.string.isRequired,
+    };
+
     const element = (
-      <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
-      </div>
-    )
+      <React.Fragment>
+        <Message subject="World" />
+        <Message greeting="Goodbye" subject={4} />
+      </ React.Fragment>
+    );
 
+    // // const messageText = React.createElement('div', null, {...props});
+    // // 🐨 use that function in place of the divs below with:
+    // // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
+    // const element = (
+    //   <div className="container">
+    //     {message({children: 'Hey World'})}
+    //     {message({children: 'See Ya Later'})}
+    //   </div>
+    // ); 
+
+    // Extra Credit #1
+    // const element = (
+    //   <div className="container">
+    //     {React.createElement(Message, {children: 'Hey World'})}
+    //     {React.createElement(Message, {children: 'See Ya Later'})}
+    //   </div>
+    // ); 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.render(element, document.getElementById('root'))
   </script>
